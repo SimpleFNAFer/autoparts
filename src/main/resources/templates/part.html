@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${part.type}">Деталь</title>
+</head>
+<body>
+    <header></header>
+
+    <div class="container">
+        <h3 th:text="${part.type}" />
+        <h4 th:text="${part.originalModel}" />
+        <p th:text="${part.supplier}" />
+        <h3 th:text="${part.price}" />
+
+        <h3>Заменители</h3>
+        <div th:each="replacePart : ${replaceParts}" class="replaces">
+            <p th:text="${replacePart.originalModel}" />
+            <h5 th:text="${replacePart.price}" />
+        </div>
+    </div>
+
+    <footer></footer>
+</body>
+</html>

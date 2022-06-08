@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Поиск запчастей</title>
+</head>
+<body>
+    <header>
+
+    </header>
+    <div class="container">
+        <h1>Для модели найдены запчасти:</h1>
+        <div th:each="part : ${parts}" class="parts">
+            <h3 th:text="${part.type}" class="part-name" />
+            <h4 th:text="${part.originalModel}" class="part-model" />
+            <p th:text="${part.supplier}" class="part-supplier" />
+            <h3 th:text="${part.price}" class="part-price" />
+        </div>
+    </div>
+</body>
+</html>
