@@ -21,12 +21,7 @@ import java.util.ArrayList;
 @AllArgsConstructor
 @CrossOrigin(origins = "*", maxAge = 3600)
 public class AuthController {
-    private AuthenticationManager authenticationManager;
-    private UserRepository userRepository;
-    private RoleRepository roleRepository;
-    private PasswordEncoder passwordEncoder;
     private AuthService authService;
-    private JwtUtils jwtUtils;
 
     @GetMapping("/login")
     public String loginPage() { return "login"; }
@@ -44,7 +39,7 @@ public class AuthController {
     @PostMapping("/login")
     public String auth(@RequestParam String username, @RequestParam String password) {
         SignInRequest signInRequest = new SignInRequest(username, password);
-        authService.authUser(signInRequest);
+        String jwt = authService.authUser(signInRequest);
         return "parts-search";
     }
 }

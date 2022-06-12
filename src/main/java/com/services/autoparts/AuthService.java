@@ -49,7 +49,7 @@ public class AuthService {
         }
     }
 
-    public void authUser (SignInRequest signInRequest) {
+    public String authUser (SignInRequest signInRequest) {
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         signInRequest.getUsername(),
@@ -59,5 +59,6 @@ public class AuthService {
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String jwt = jwtUtils.generateJwtToken(authentication);
+        return jwt;
     }
 }

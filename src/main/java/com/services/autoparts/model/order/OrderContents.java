@@ -13,12 +13,12 @@ public class OrderContents {
     @EmbeddedId
     private OrderContentsKey id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @MapsId("orderId")
     @JoinColumn(name = "order_id")
     private Order order;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @MapsId("partId")
     @JoinColumn(name = "part_id")
     private Part part;
