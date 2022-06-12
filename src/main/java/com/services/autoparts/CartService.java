@@ -58,7 +58,8 @@ public class CartService {
                 cck.setPartId(part.getId());
                 c.setNumber(1);
                 c.setId(cck);
-                cartContentsRepository.save(c);
+                c.setCart(userCart);
+                c.setPart(part);
                 contents.add(c);
             }
 
@@ -70,17 +71,16 @@ public class CartService {
             userCart.setPrice(part.getPrice());
             CartContents c = new CartContents();
             c.setNumber(1);
-            CartContentsKey ck = new CartContentsKey();
-            ck.setCartId(userCart.getId());
-            ck.setPartId(part_id);
-            c.setId(ck);
-            cartContentsRepository.save(c);
+            CartContentsKey cck = new CartContentsKey();
+            cck.setCartId(userCart.getId());
+            cck.setPartId(part_id);
+            c.setId(cck);
+            c.setCart(userCart);
+            c.setPart(part);
             contents.add(c);
 
             userCart.setContents(contents);
         }
-
-
         cartRepository.save(userCart);
     }
 

@@ -20,7 +20,7 @@ public class Cart {
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
 
-    @OneToMany(mappedBy = "cart", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "cart", cascade = CascadeType.ALL)
     private List<CartContents> contents;
     private BigDecimal price;
 }
