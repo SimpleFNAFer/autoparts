@@ -1,4 +1,7 @@
 <div th:fragment="header" class="header">
-  <a href="/">Поиск запчасти</a>
-  <a th:href="'/cart/'">Корзина</a>
+  <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+    <a class="d-block navbar-brand mx-auto" href="/">Поиск запчасти</a>
+    <a class="d-block navbar-brand mx-auto" th:href="'/cart/'">Корзина</a>
+    <a class="d-block navbar-brand mx-auto" th:href="'/orders/'">Заказы</a>
+  </nav>
 </div>

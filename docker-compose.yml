@@ -1,0 +1,10 @@
+version: '1'
+services:
+  db:
+    image: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_PASSWORD=root
+      - MYSQL_DATABASE=autoparts
+    ports:
+      - "3307:3306"

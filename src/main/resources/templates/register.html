@@ -10,20 +10,20 @@
     <title>Регистрация</title>
 </head>
 <body>
-    <div class="container">
-        <form name="f" th:action="@{/register}" method="post">
-            <fieldset>
-                <legend>Создайте аккаунт</legend>
+    <div class="d-flex justify-content-center align-items-center flex-column">
+        <form class="d-flex justify-content-center flex-column" name="f" th:action="@{/register}" method="post">
+            <legend class="text-center">Создайте аккаунт</legend>
+            <div class="form-group my-2">
                 <label for="username">Имя пользователя</label>
-                <input type="text" id="username" name="username" placeholder="введите имя пользователя">
+                <input class="form-control" type="text" id="username" name="username" placeholder="введите имя пользователя">
+            </div>
+            <div class="form-group my-2">
                 <label for="password">Пароль</label>
-                <input type="password" id="password" name="password" placeholder="введите пароль">
-                <div class="form-actions">
-                    <button type="submit" class="btn">Зарегистрироваться</button>
-                </div>
-            </fieldset>
+                <input class="form-control" type="password" id="password" name="password" placeholder="введите пароль">
+            </div>
+            <button type="submit" class="btn btn-primary my-2">Зарегистрироваться</button>
         </form>
-        <a th:href="@{/login}">Есть аккаунт? Войти</a>
+        <a class="link-primary" th:href="@{/login}">Есть аккаунт? Войти</a>
     </div>
 </body>
 </html>

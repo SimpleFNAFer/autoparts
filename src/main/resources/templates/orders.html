@@ -11,19 +11,19 @@
 </head>
 <body>
 <header th:insert="/blocks/header"></header>
-<div class="container">
-    <h1>Заказы:</h1>
-    <div th:each="order : ${orders}">
-        <h2 th:text="'Заказ номер '+${order.id}"></h2>
-        <div th:each="part : ${order.parts}" class="parts">
-            <h3 th:text="${part.type}" class="part-name" />
-            <h4 th:text="${part.originalModel}" class="part-model" />
-            <p th:text="${part.supplier}" class="part-supplier" />
-            <h3 th:text="${part.price}" class="part-price" />
-            <a th:href="'/part/'+${part.id}">Деталь</a>
-            <h2 th:text="'x'+${part.number}" />
+<div class="d-flex w-50 mx-auto mt-5 flex-column">
+    <h1 class="my-5">Заказы:</h1>
+    <div class="bg-light rounded d-flex flex-column w-100 p-4 my-4" th:each="order : ${orders}">
+        <h2 class="mb-3 text-primary" th:text="'Заказ номер '+${order.id}">Номер заказа</h2>
+        <div class="w-100 d-flex flex-column border-top border-secondary mb-5" th:each="part : ${order.parts}">
+            <h3 th:text="${part.type}" class="mt-3 mb-2">Тип детали</h3>
+            <h4 th:text="${part.originalModel}" class="my-2" >Модель</h4>
+            <p th:text="${part.supplier}" class="my-2" >Производитель</p>
+            <h3 th:text="${part.price}" class="mt-3" >Цена</h3>
+            <h2 th:text="'x'+${part.number}" class="mt-3">x(кол-во)</h2>
+            <a class="btn btn-outline-secondary btn-sm w-25" th:href="'/part/'+${part.id}">Деталь</a>
         </div>
-        <h2 th:text="${order.price}"></h2>
+        <h2 class="text-secondary border-top border-secondary pt-3" th:text="${order.price}">Цена заказа</h2>
     </div>
 </div>
 </body>

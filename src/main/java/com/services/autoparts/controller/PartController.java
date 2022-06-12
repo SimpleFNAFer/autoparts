@@ -22,6 +22,7 @@ public class PartController {
     @GetMapping("/search")
     public String search(@RequestParam String modelName, Model model) {
         Iterable<PartForDisplay> partsForDisplay = partService.getPartsList(modelName);
+        model.addAttribute("model", modelName);
         model.addAttribute("parts", partsForDisplay);
         return "parts-list";
     }

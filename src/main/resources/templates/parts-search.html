@@ -11,11 +11,14 @@
 </head>
 <body>
     <header th:insert="blocks/header :: header"></header>
-    <div class="container">
-        <form class="search_form" action="#" th:action="@{/search}">
-            <label>Модель авто</label>
-            <input type="search" placeholder="введите модель авто" class="search_input" name="modelName" >
-            <button type="submit" class="search_button">Поиск</button>
+    <div class="d-flex align-items-center mt-5 flex-column">
+        <form class="d-flex mt-5 justify-content-center align-items-center flex-column" th:action="@{/search}">
+            <legend class="text-center pb-4">Добро пожаловать на страницу поиска детали</legend>
+            <div class="form-group my-2 w-100">
+                <label for="search">Модель авто</label>
+                <input class="form-control" id="search" type="search" placeholder="введите модель авто" name="modelName" >
+            </div>
+            <button type="submit" class="btn btn-outline-primary btn-lg w-50 mt-5">Поиск</button>
         </form>
     </div>
     <footer></footer>

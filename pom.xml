@@ -119,6 +119,7 @@
                 </configuration>
             </plugin>
         </plugins>
+        <finalName>autoparts-app</finalName>
     </build>
 
 </project>

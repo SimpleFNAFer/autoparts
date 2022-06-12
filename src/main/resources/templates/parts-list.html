@@ -11,14 +11,14 @@
 </head>
 <body>
     <header th:insert="blocks/header :: header"></header>
-    <div class="container">
-        <h1>Для модели найдены запчасти:</h1>
-        <div th:each="part : ${parts}" class="parts">
-            <h3 th:text="${part.type}" class="part-name" />
-            <h4 th:text="${part.originalModel}" class="part-model" />
-            <p th:text="${part.supplier}" class="part-supplier" />
-            <h3 th:text="${part.price}" class="part-price" />
-            <a th:href="'/part/'+${part.id}">Деталь</a>
+    <div class="d-flex align-items-center mx-auto mt-5 flex-column w-50">
+        <h1 th:text="'Для модели '+${model}+' найдены запчасти:'" class="d-inline-block my-5">Для модели найдены запчасти:</h1>
+        <div th:each="part : ${parts}" class="p-3 my-1 bg-light border border-secondary rounded d-flex flex-column w-100">
+            <h3 th:text="${part.type}" class="d-inline-block text-center font-weight-bold">Тип детали</h3>
+            <h4 th:text="${part.originalModel}" class="d-inline-block mt-1 font-weight-normal">Модель</h4>
+            <p th:text="${part.supplier}" class="d-inline-block mt-1 font-weight-light" >Производитель</p>
+            <h3 th:text="${part.price}" class="d-inline-block mt-2 font-weight-bold">Цена</h3>
+            <a th:href="'/part/'+${part.id}" class="btn btn-outline-secondary w-25 btn-lg mt-2" aria-pressed="true">Деталь</a>
         </div>
     </div>
 </body>

@@ -10,22 +10,22 @@
     <title>Вход</title>
 </head>
 <body>
-    <div class="container">
-        <form name="f" th:action="@{/login}" method="post">
-            <fieldset>
-                <legend>Пожалуйста, войдите</legend>
-                <div th:if="${param.error}">Неверные имя пользователя или пароль</div>
-                <div th:if="${param.logout}">Был выполнен выход</div>
+    <div class="d-flex justify-content-center align-items-center flex-column">
+        <form class="d-flex justify-content-center flex-column" name="f" th:action="@{/login}" method="post">
+            <legend class="text-center">Пожалуйста, войдите</legend>
+            <div class="text-center text-danger bg-light p-2 my-1 border border-danger rounded" th:if="${param.error}">Неверные имя пользователя или пароль</div>
+            <div class="text-center text-danger bg-light p-2 my-1 border border-danger rounded" th:if="${param.logout}">Был выполнен выход</div>
+            <div class="form-group my-2">
                 <label for="username">Имя пользователя</label>
-                <input type="text" id="username" name="username" placeholder="введите имя пользователя">
+                <input class="form-control" type="text" id="username" name="username" placeholder="введите имя пользователя">
+            </div>
+            <div class="form-group my-2">
                 <label for="password">Пароль</label>
-                <input type="password" id="password" name="password" placeholder="введите пароль">
-                <div class="form-actions">
-                    <button type="submit" class="btn">Войти</button>
-                </div>
-            </fieldset>
+                <input class="form-control" type="password" id="password" name="password" placeholder="введите пароль">
+            </div>
+            <button type="submit" class="btn btn-primary my-2">Войти</button>
         </form>
-        <a th:href="@{/register}">Регистрация</a>
+        <a class="link-primary" th:href="@{/register}">Регистрация</a>
     </div>
 </body>
 </html>

@@ -11,20 +11,22 @@
 </head>
 <body>
     <header th:insert="/blocks/header"></header>
-    <div class="container">
-        <h1>Корзина</h1>
-        <form name="cart_form" th:action="@{/order/create}" th:method="POST">
-            <div th:each="part : ${cart.parts}" class="parts">
-                <h3 th:text="${part.type}" class="part-name" />
-                <h4 th:text="${part.originalModel}" class="part-model" />
-                <p th:text="${part.supplier}" class="part-supplier" />
-                <h3 th:text="${part.price}" class="part-price" />
-                <a th:href="'/remove/'+${part.id}">Удалить</a>
-                <a th:href="'/part/'+${part.id}">Деталь</a>
-                <h2 th:text="'x'+${part.number}" />
+    <div class="d-flex w-50 mx-auto mt-5 flex-column">
+        <h1 class="my-5">Корзина</h1>
+        <form class="bg-light rounded d-flex flex-column w-100 p-4" name="cart_form" th:action="@{/order/create}" th:method="POST">
+            <div th:each="part : ${cart.parts}" class="w-100 d-flex flex-column mb-5 border-top border-secondary">
+                <h3 th:text="${part.type}" class="my-2">Тип детали</h3>
+                <h4 th:text="${part.originalModel}" class="my-2">Модель</h4>
+                <p th:text="${part.supplier}" class="my-2" >Производитель</p>
+                <h3 th:text="${part.price}" class="mt-3" >Цена</h3>
+                <h2  th:text="'x'+${part.number}" class="mt-3" >x(кол-во)</h2>
+                <div class="d-flex flex-row mt-3 align-items-end w-100 justify-content-around btn-group">
+                    <a class="btn btn-outline-danger" th:href="'/remove/'+${part.id}">Удалить</a>
+                    <a class="btn btn-outline-secondary" th:href="'/part/'+${part.id}">Деталь</a>
+                </div>
             </div>
-            <div th:text="${cart.finalPrice}"></div>
-            <button type="submit">Оформить заказ</button>
+            <h1 class="my-5 mx-auto" th:text="${cart.finalPrice}">Цена корзины</h1>
+            <button class="btn btn-primary" type="submit">Оформить заказ</button>
         </form>
     </div>
 </body>
