@@ -19,7 +19,7 @@
                 <h4 th:text="${part.originalModel}" class="part-model" />
                 <p th:text="${part.supplier}" class="part-supplier" />
                 <h3 th:text="${part.price}" class="part-price" />
-                <a th:href="'/remove/part/'+${part.id}">Удалить</a>
+                <a th:href="'/remove/'+${part.id}">Удалить</a>
                 <a th:href="'/part/'+${part.id}">Деталь</a>
                 <h2 th:text="'x'+${part.number}" />
             </div>

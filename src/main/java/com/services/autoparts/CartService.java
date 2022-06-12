@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 @AllArgsConstructor
@@ -118,21 +119,25 @@ public class CartService {
     }
 
     public void removeFromCart (User user, Long partId) {
+        user = userRepository.findById(1L).get();
         Part partToRemove = new Part();
         if (partRepository.findById(partId).isPresent()) partToRemove = partRepository.findById(partId).get();
 
         Cart userCart = new Cart();
         if(cartRepository.findByUser(user).isPresent()) userCart = cartRepository.findByUser(user).get();
 
-        List<CartContents> contents = userCart.getContents();
+        List<CartContents> contents = cartContentsRepository.findByCart(userCart);
+        List<CartContents> newContents = new ArrayList<>();
+        BigDecimal newPrice = BigDecimal.ZERO;
         for (CartContents c : contents) {
-            if (c.getPart().equals(partToRemove)) {
-                BigDecimal price = c.getPart().getPrice().multiply(BigDecimal.valueOf(c.getNumber()));
-                userCart.setPrice(userCart.getPrice().subtract(price));
-                contents.remove(c);
+            if (!Objects.equals(c.getPart(), partToRemove)) {
+                newPrice=newPrice.add(c.getPart().getPrice().multiply(BigDecimal.valueOf(c.getNumber())));
+                newContents.add(c);
             }
+            cartContentsRepository.delete(c);
         }
-        userCart.setContents(contents);
+        userCart.setPrice(newPrice);
+        userCart.setContents(newContents);
         cartRepository.save(userCart);
     }
 }
