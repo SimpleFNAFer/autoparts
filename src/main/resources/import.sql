@@ -38,3 +38,6 @@ insert into part_replace (part_id, replace_model_id) values (9,1);
 insert into part_replace (part_id, replace_model_id) values (9,6);
 insert into part_replace (part_id, replace_model_id) values (9,2);
 insert into part_replace (part_id, replace_model_id) values (9,7);
+
+insert into role (id, name) values (1, 'ROLE_ADMIN');
+insert into role (id, name) values (2, 'ROLE_USER');

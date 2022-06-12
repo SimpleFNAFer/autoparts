@@ -9,10 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class MainController {
 
     @RequestMapping("/")
-    public ModelAndView search() {
-        ModelAndView view = new ModelAndView();
-        view.setViewName("parts-search");
-        System.out.println("at least accessed");
-        return view;
+    public String search() {
+        return "parts-search";
     }
 }

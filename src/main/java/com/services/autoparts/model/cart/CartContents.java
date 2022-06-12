@@ -14,14 +14,14 @@ public class CartContents {
     @EmbeddedId
     private CartContentsKey id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @MapsId("cartId")
     @JoinColumn(name = "cart_id")
     private Cart cart;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @MapsId("partId")
     @JoinColumn(name = "part_id")
     private Part part;
-    private Long number;
+    private Integer number;
 }

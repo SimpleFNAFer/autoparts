@@ -1,10 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+          crossorigin="anonymous"/>
+    <title>Корзина</title>
 </head>
 <body>
-
+    <header th:insert="/blocks/header"></header>
+    <div class="container">
+        <h1>Корзина</h1>
+        <form name="cart_form" th:action="@{/order/create}" th:method="POST">
+            <div th:each="part : ${cart.parts}" class="parts">
+                <h3 th:text="${part.type}" class="part-name" />
+                <h4 th:text="${part.originalModel}" class="part-model" />
+                <p th:text="${part.supplier}" class="part-supplier" />
+                <h3 th:text="${part.price}" class="part-price" />
+                <a th:href="'/remove/part/'+${part.id}">Удалить</a>
+                <a th:href="'/part/'+${part.id}">Деталь</a>
+                <h2 th:text="'x'+${part.number}" />
+            </div>
+            <div th:text="${cart.finalPrice}"></div>
+            <button type="submit">Оформить заказ</button>
+        </form>
+    </div>
 </body>
 </html>

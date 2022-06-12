@@ -23,5 +23,5 @@ public class OrderContents {
     @JoinColumn(name = "part_id")
     private Part part;
 
-    private Long number;
+    private Integer number;
 }

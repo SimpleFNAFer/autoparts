@@ -8,5 +8,5 @@ import java.util.List;
 
 public interface ModelRepository extends JpaRepository<Model, Long> {
     List<Long> findPartsByMainNameAndSubName(String mainName, String subName);
-    List<Part> findPartsByMainName(String mainName);
+    List<Model> findByMainName(String mainName);
 }
