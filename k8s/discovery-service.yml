@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: discovery-service
+spec:
+  ports:
+    - name: 80-8084
+      port: 80
+      protocol: TCP
+      targetPort: 8084
+  selector:
+    app: discovery-service

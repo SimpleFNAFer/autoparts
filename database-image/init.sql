@@ -1,0 +1,9 @@
+CREATE ROLE part_service WITH LOGIN PASSWORD 'prt-srv';
+CREATE ROLE order_service WITH LOGIN PASSWORD 'ord-srv';
+CREATE ROLE cart_service WITH LOGIN PASSWORD 'crt-srv';
+CREATE ROLE user_service WITH LOGIN PASSWORD 'usr-srv';
+
+CREATE SCHEMA part AUTHORIZATION part_service;
+CREATE SCHEMA cart AUTHORIZATION cart_service;
+CREATE SCHEMA order AUTHORIZATION order_service;
+CREATE SCHEMA user AUTHORIZATION user_service;

@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: database
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: database
+  template:
+    metadata:
+      labels:
+        app: database
+    spec:
+      containers:
+        - name: autoparts-database
+          image: autoparts-database:latest
+          imagePullPolicy: Never
+          env:
+            - name: MYSQL_USERNAME
+              value: root
+            - name: MYSQL_ROOT_PASSWORD
+              value: root
+            - name: MYSQL_DATABASE
+              value: autoparts
+          ports:
+            - containerPort: 5432

@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cart-service
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: cart-service
+  template:
+    metadata:
+      labels:
+        app: cart-service
+    spec:
+      containers:
+        - name: cart-service
+          image: cart-service:latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8082
+          readinessProbe:
+            httpGet:
+              port: 8082
+              path: /cart/actuator/health/readiness
+            initialDelaySeconds: 30
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              port: 8082
+              path: /cart/actuator/health/liveness
+            initialDelaySeconds: 30
+            periodSeconds: 10

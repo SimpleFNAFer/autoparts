@@ -10,7 +10,7 @@
     <title>Корзина</title>
 </head>
 <body>
-    <header th:insert="/blocks/header"></header>
+    <header th:insert="blocks/header :: header"></header>
     <div class="d-flex w-50 mx-auto mt-5 flex-column">
         <h1 class="my-5">Корзина</h1>
         <form class="bg-light rounded d-flex flex-column w-100 p-4" name="cart_form" th:action="@{/order/create}" th:method="POST">

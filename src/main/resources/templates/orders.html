@@ -10,7 +10,7 @@
     <title>Заказы</title>
 </head>
 <body>
-<header th:insert="/blocks/header"></header>
+<header th:insert="blocks/header :: header"></header>
 <div class="d-flex w-50 mx-auto mt-5 flex-column">
     <h1 class="my-5">Заказы:</h1>
     <div class="bg-light rounded d-flex flex-column w-100 p-4 my-4" th:each="order : ${orders}">
